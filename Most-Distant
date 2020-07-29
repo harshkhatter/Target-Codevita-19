@@ -1,0 +1,47 @@
+# https://www.hackerrank.com/challenges/most-distant/
+
+#!/bin/python3
+
+import os
+import sys
+
+# Complete the solve function below.
+def solve(coordinates):
+
+    # define the input values
+    cox = [x[0] for x in coordinates]
+    coy = [y[1] for y in coordinates]
+
+    # take the temporary variables to store the absolute values of x and y
+    cox2 = [abs(x[0]) for x in coordinates]
+    coy2 = [abs(y[1]) for y in coordinates]
+
+    # check the condition of min and max
+    if max(max(cox)-min(cox), max(coy)- min(coy)) >= ((max(max(cox2),max(coy2))**2) +   (min(max(cox2),max(coy2))**2))**0.5:
+
+        # if condition is true, return the value
+        return max(max(cox)-min(cox), max(coy)- min(coy))
+    
+        # if condition is false, return the value in else
+    else:
+        return ((max(max(cox2),max(coy2))**2) + (min(max(cox2),max(coy2))**2))**0.5
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    coordinates = []
+
+    for _ in range(n):
+        coordinates.append(list(map(int, input().rstrip().split())))
+
+    result = solve(coordinates)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+# https://www.hackerrank.com/challenges/most-distant/
